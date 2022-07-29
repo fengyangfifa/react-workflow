@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# 忽略 webstorm 自动生成的项目文件
+/.idea
