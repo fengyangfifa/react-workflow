@@ -1,15 +1,7 @@
-class Example {
-  constructor() {
-    console.log('sss')
-  }
-}
+import {createRoot} from "react-dom/client";
 
-const a = new Example()
-console.log(a);
+import App from "./app";
 
-const bbb = '123'
-console.log(bbb)
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);
 
-const funa = () => {
-  console.log('funca')
-}
