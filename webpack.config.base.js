@@ -52,6 +52,26 @@ module.exports.baseConf = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: "babel-loader"
+      },
+      {
+        test: /\.(webp|gif|jpe?g|png|ttf|woff|woff2|otf)$/i,
+        type: "asset",
+        generator: {
+          filename: "static/images/[hash][ext][query]"
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 4 * 1024 // 4kb
+          }
+        }
+      },
+      {
+        test: /\.svg$/i,
+        type: "asset/inline",
+      },
+      {
+        test: /\.txt$/i,
+        type: 'asset/source',
       }
     ]
   },
@@ -62,7 +82,7 @@ module.exports.baseConf = {
     clean: true,
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash:8].js",
-    chunkFilename: "[name].[contenthash:8].chunk.js"
+    chunkFilename: "static/js/[name].[contenthash:8].chunk.js"
   },
   plugins: [
     new HtmlWebpackPlugin({
