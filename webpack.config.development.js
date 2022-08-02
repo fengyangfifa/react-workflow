@@ -14,6 +14,7 @@ const {
 
 module.exports = merge(baseConf, {
   mode: process.env.NODE_ENV,
+  devtool: "cheap-module-source-map",
   module: {
     rules: [
       {

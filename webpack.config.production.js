@@ -1,6 +1,7 @@
 const {merge} = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const {
   baseConf,
@@ -14,6 +15,7 @@ const {
 
 module.exports = merge(baseConf, {
   mode: process.env.NODE_ENV,
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -43,6 +45,9 @@ module.exports = merge(baseConf, {
         }, false, "sass-loader")
       }
     ]
+  },
+  optimization: {
+    minimizer: ['...', new CssMinimizerPlugin()]
   },
   plugins: [
     new MiniCssExtractPlugin({
