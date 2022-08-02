@@ -16,10 +16,16 @@ module.exports.getStyleLoaders = (cssOptions = {}, isDevelopment = true, preProc
       },
     {
       loader: require.resolve("css-loader"),
-      options: cssOptions
+      options: {
+        ...cssOptions,
+        sourceMap: true
+      }
     },
     {
-      loader: "postcss-loader"
+      loader: "postcss-loader",
+      options: {
+        sourceMap: true
+      }
     }
   ];
 
@@ -51,7 +57,12 @@ module.exports.baseConf = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: "babel-loader"
+        use: {
+          loader: "babel-loader",
+          options: {
+            cacheDirectory: true
+          }
+        }
       },
       {
         test: /\.(webp|gif|jpe?g|png|ttf|woff|woff2|otf)$/i,
