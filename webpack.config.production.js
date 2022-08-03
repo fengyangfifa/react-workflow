@@ -47,7 +47,17 @@ module.exports = merge(baseConf, {
     ]
   },
   optimization: {
-    minimizer: ['...', new CssMinimizerPlugin()]
+    minimizer: ['...', new CssMinimizerPlugin()],
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
   },
   plugins: [
     new MiniCssExtractPlugin({
