@@ -55,7 +55,7 @@ module.exports.baseConf = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(jsx?|tsx?)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -87,7 +87,10 @@ module.exports.baseConf = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '...']
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '...'],
+    alias: {
+      "@": path.resolve(__dirname, 'src')
+    }
   },
   output: {
     clean: true,
