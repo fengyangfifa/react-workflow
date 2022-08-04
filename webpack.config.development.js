@@ -46,10 +46,9 @@ module.exports = merge(baseConf, {
     ]
   },
   devServer: {
-    static: path.resolve(__dirname, 'dist'),
+    static: path.resolve(__dirname, "dist"),
     hot: true,
-    open: true,
     compress: true,
     port: 3000
   }
-})
+});

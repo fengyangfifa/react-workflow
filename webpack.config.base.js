@@ -1,13 +1,15 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports.cssRegex = /\.css$/;
 module.exports.cssModuleRegex = /\.module\.css$/;
 module.exports.sassRegex = /\.(scss|sass)$/;
 module.exports.sassModuleRegex = /\.module\.(scss|sass)$/;
 
-module.exports.getStyleLoaders = (cssOptions = {}, isDevelopment = true, preProcessor = '') => {
+module.exports.getStyleLoaders = (cssOptions = {}, isDevelopment = true, preProcessor = "") => {
   const loaders = [
     isDevelopment
       ? require.resolve("style-loader")
@@ -34,7 +36,7 @@ module.exports.getStyleLoaders = (cssOptions = {}, isDevelopment = true, preProc
       {
         loader: require.resolve("resolve-url-loader"),
         options: {
-          root: path.resolve(__dirname, 'src'),
+          root: path.resolve(__dirname, "src"),
           sourceMap: true
         }
       },
@@ -51,11 +53,11 @@ module.exports.getStyleLoaders = (cssOptions = {}, isDevelopment = true, preProc
 };
 
 module.exports.baseConf = {
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   module: {
     rules: [
       {
-        test: /\.(jsx?|tsx?)$/,
+        test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -82,14 +84,14 @@ module.exports.baseConf = {
       },
       {
         test: /\.txt$/i,
-        type: 'asset/source',
+        type: "asset/source",
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '...'],
+    extensions: [".js", ".jsx", ".ts", ".tsx", "..."],
     alias: {
-      "@": path.resolve(__dirname, 'src')
+      "@": path.resolve(__dirname, "src")
     }
   },
   output: {
@@ -102,6 +104,13 @@ module.exports.baseConf = {
     new HtmlWebpackPlugin({
       title: "react-workflow",
       template: "public/index.html"
+    }),
+    new ESLintPlugin({
+      extensions: ["js", "mjs", "jsx", "ts", "tsx"],
+      failOnError: true
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      async: true
     })
   ]
-}
+};
