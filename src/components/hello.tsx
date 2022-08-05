@@ -2,7 +2,7 @@ import React from "react";
 
 import "./hello.scss";
 import web from "@/assets/web.webp";
-import {HelloProps} from "./he";
+import { HelloProps } from "./he";
 
 function Hello(props: HelloProps) {
   const a = 1;
@@ -15,7 +15,7 @@ function Hello(props: HelloProps) {
   return (
     <div className="hello" onClick={handleClick}>
       hello-{a}
-      <img src={web} alt=""/>
+      <img src={web} alt="" />
     </div>
   );
 }

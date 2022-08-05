@@ -1,4 +1,4 @@
-import {useState,useEffect} from "react";
+import { useState, useEffect } from "react";
 
 import "./app.css";
 import "./app.scss";
@@ -21,9 +21,11 @@ function App() {
     <div>
       hello react
       <p className="count">{count}</p>
-      <img src={web} alt="web"/>
+      <img src={web} alt="web" />
       <p>{testTxt}</p>
-      <button className="click" onClick={handleClick}>click</button>
+      <button className="click" onClick={handleClick}>
+        click
+      </button>
       <Hello name={""} />
     </div>
   );

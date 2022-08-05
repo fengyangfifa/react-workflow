@@ -14,4 +14,4 @@ module.exports = {
     ],
     "postcss-normalize" // 根据 browserslist 来根据目标浏览器动态使用 normalize.css 中的样式。
   ]
-}
+};

@@ -1,4 +1,4 @@
-const {merge} = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
@@ -12,7 +12,6 @@ const {
   getStyleLoaders
 } = require("./webpack.config.base");
 
-
 module.exports = merge(baseConf, {
   mode: process.env.NODE_ENV,
   devtool: "source-map",
@@ -25,11 +24,14 @@ module.exports = merge(baseConf, {
       },
       {
         test: cssModuleRegex,
-        use: getStyleLoaders({
-          modules: {
-            getLocalIdent: getCSSModuleLocalIdent
-          }
-        }, false)
+        use: getStyleLoaders(
+          {
+            modules: {
+              getLocalIdent: getCSSModuleLocalIdent
+            }
+          },
+          false
+        )
       },
       {
         test: sassRegex,
@@ -38,23 +40,27 @@ module.exports = merge(baseConf, {
       },
       {
         test: sassModuleRegex,
-        use: getStyleLoaders({
-          modules: {
-            getLocalIdent: getCSSModuleLocalIdent // css module 命名规则
-          }
-        }, false, "sass-loader")
+        use: getStyleLoaders(
+          {
+            modules: {
+              getLocalIdent: getCSSModuleLocalIdent // css module 命名规则
+            }
+          },
+          false,
+          "sass-loader"
+        )
       }
     ]
   },
   optimization: {
-    minimizer: ['...', new CssMinimizerPlugin()],
+    minimizer: ["...", new CssMinimizerPlugin()],
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
+          name: "vendors",
+          chunks: "all"
         }
       }
     }
@@ -65,4 +71,4 @@ module.exports = merge(baseConf, {
       chunkFilename: "static/css/[name].[contenthash:8].chunk.css"
     })
   ]
-})
+});

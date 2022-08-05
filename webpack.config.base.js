@@ -9,13 +9,17 @@ module.exports.cssModuleRegex = /\.module\.css$/;
 module.exports.sassRegex = /\.(scss|sass)$/;
 module.exports.sassModuleRegex = /\.module\.(scss|sass)$/;
 
-module.exports.getStyleLoaders = (cssOptions = {}, isDevelopment = true, preProcessor = "") => {
+module.exports.getStyleLoaders = (
+  cssOptions = {},
+  isDevelopment = true,
+  preProcessor = ""
+) => {
   const loaders = [
     isDevelopment
       ? require.resolve("style-loader")
       : {
-        loader: MiniCssExtractPlugin.loader,
-      },
+          loader: MiniCssExtractPlugin.loader
+        },
     {
       loader: require.resolve("css-loader"),
       options: {
@@ -80,11 +84,11 @@ module.exports.baseConf = {
       },
       {
         test: /\.svg$/i,
-        type: "asset/inline",
+        type: "asset/inline"
       },
       {
         test: /\.txt$/i,
-        type: "asset/source",
+        type: "asset/source"
       }
     ]
   },

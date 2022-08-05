@@ -1,5 +1,5 @@
 const path = require("path");
-const {merge} = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
 
 const {
@@ -10,7 +10,6 @@ const {
   sassModuleRegex,
   getStyleLoaders
 } = require("./webpack.config.base");
-
 
 module.exports = merge(baseConf, {
   mode: process.env.NODE_ENV,
@@ -37,11 +36,15 @@ module.exports = merge(baseConf, {
       },
       {
         test: sassModuleRegex,
-        use: getStyleLoaders({
-          modules: {
-            getLocalIdent: getCSSModuleLocalIdent // css module 命名规则
-          }
-        }, true, "sass-loader")
+        use: getStyleLoaders(
+          {
+            modules: {
+              getLocalIdent: getCSSModuleLocalIdent // css module 命名规则
+            }
+          },
+          true,
+          "sass-loader"
+        )
       }
     ]
   },

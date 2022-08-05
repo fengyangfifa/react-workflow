@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import style from "./app2.module.css";
 import style2 from "./app2.module.scss";
 
@@ -13,7 +13,9 @@ function App() {
     <div>
       hello react
       <p className={style["count-s"]}>{count}</p>
-      <button className={style2.click} onClick={handleClick}>click</button>
+      <button className={style2.click} onClick={handleClick}>
+        click
+      </button>
     </div>
   );
 }
