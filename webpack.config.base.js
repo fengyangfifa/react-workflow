@@ -9,11 +9,7 @@ module.exports.cssModuleRegex = /\.module\.css$/;
 module.exports.sassRegex = /\.(scss|sass)$/;
 module.exports.sassModuleRegex = /\.module\.(scss|sass)$/;
 
-module.exports.getStyleLoaders = (
-  cssOptions = {},
-  isDevelopment = true,
-  preProcessor = ""
-) => {
+module.exports.getStyleLoaders = (cssOptions = {}, isDevelopment = true, preProcessor = "") => {
   const loaders = [
     isDevelopment
       ? require.resolve("style-loader")
