@@ -5,6 +5,7 @@
     "sourceMap": true,
     "jsx": "react-jsx", // 在 .tsx 文件中不用手动导入 React
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": false,
     "noImplicitAny": true,
