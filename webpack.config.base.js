@@ -94,6 +94,9 @@ module.exports.baseConf = {
       "@": path.resolve(__dirname, "src")
     }
   },
+  cache: {
+    type: "filesystem" // 使用文件系统缓存，开启增量构建
+  },
   output: {
     clean: true,
     path: path.resolve(__dirname, "dist"),
@@ -107,7 +110,9 @@ module.exports.baseConf = {
     }),
     new ESLintPlugin({
       extensions: ["js", "mjs", "jsx", "ts", "tsx"],
-      failOnError: true
+      failOnError: true,
+      cache: true, // 开启eslint缓存
+      cacheLocation: path.resolve(path.resolve(__dirname, "node_modules"), ".cache/.eslintcache")
     }),
     new ForkTsCheckerWebpackPlugin({
       async: true
